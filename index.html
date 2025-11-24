@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Transferencias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="phone-frame">
+            <div class="app-content">
+                <h1>Mi Banco</h1>
+
+                <!-- Etapa 1: Pantalla de Saldo Inicial -->
+                <div id="initialScreen" class="screen active">
+                    <div class="balance-section">
+                        <h2>Bienvenido</h2>
+                        <p>Ingrese su saldo inicial para comenzar</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="initialAmount">Saldo inicial:</label>
+                        <input type="number" id="initialAmount" placeholder="Ejemplo: 10000">
+                        <button onclick="setInitialBalance()">Comenzar</button>
+                    </div>
+                </div>
+
+                <!-- Etapa 2: Pantalla de Alias -->
+                <div id="aliasScreen" class="screen">
+                    <div class="balance-section">
+                        <h2>Saldo Actual</h2>
+                        <p id="currentBalance">$0</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="alias">Ingrese el alias del destinatario:</label>
+                        <input type="text" id="alias" placeholder="Ejemplo: juan.perez.casa">
+                        <button onclick="confirmAlias()">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Etapa 3: Pantalla de Monto -->
+                <div id="amountScreen" class="screen">
+                    <div class="balance-section">
+                        <h2>Saldo Actual</h2>
+                        <p id="currentBalanceAmount">$0</p>
+                        <p id="selectedAlias" class="selected-alias"></p>
+                    </div>
+                    <div class="input-group">
+                        <label for="transferAmount">Monto a transferir:</label>
+                        <input type="number" id="transferAmount" placeholder="Ejemplo: 1000" oninput="updateTransferText()">
+                    </div>
+                    <div class="amount-display">
+                        <p id="transferTextDisplay">Ingrese el monto</p>
+                        <button onclick="speakAmount()" class="speak-button">🔊 Escuchar</button>
+                        <button onclick="startQRScanner()" class="qr-button">📱 Escanear QR</button>
+                    </div>
+                    <button onclick="makeTransfer()" class="transfer-button">Realizar Transferencia</button>
+                </div>
+
+                <!-- Etapa 4: Pantalla de Resultado -->
+                <div id="resultScreen" class="screen">
+                    <div class="balance-section">
+                        <h2>¡Transferencia Exitosa!</h2>
+                    </div>
+                    <div class="transfer-summary">
+                        <p>Tu transferencia se realizó correctamente</p>
+                        <p id="transferDetails"></p>
+                    </div>
+                    <button onclick="startNewTransfer()" class="new-transfer-button">Nueva Transferencia</button>
+                </div>
+
+                <div id="message" class="message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para escaneo QR -->
+    <div id="qrModal" class="qr-modal">
+        <div class="qr-modal-content">
+            <span class="qr-close" onclick="closeQRScanner()">&times;</span>
+            <h2>Escanear Código QR</h2>
+            <video id="qrVideo" width="100%" height="auto"></video>
+            <canvas id="qrCanvas" style="display:none;"></canvas>
+            <p id="qrStatus">Apunta la cámara al código QR</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
