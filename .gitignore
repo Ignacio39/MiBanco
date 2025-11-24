@@ -1,3 +1,6 @@
+# Dependencies
+node_modules/
+
 # Logs
 logs/
 *.log
@@ -10,9 +13,6 @@ pids/
 
 # Coverage directory
 coverage/
-
-# Dependency directories
-node_modules/
 
 # OS files
 .DS_Store

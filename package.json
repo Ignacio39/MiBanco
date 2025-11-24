@@ -1,0 +1,23 @@
+{
+  "name": "web_de_matematica",
+  "version": "1.0.0",
+  "description": "Una aplicación web educativa diseñada para enseñar a realizar transferencias bancarias a personas con discapacidad, con una interfaz accesible y fácil de usar.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ignacio39/MiBanco.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ignacio39/MiBanco/issues"
+  },
+  "homepage": "https://github.com/Ignacio39/MiBanco#readme",
+  "dependencies": {
+    "jsqr": "^1.4.0"
+  }
+}
